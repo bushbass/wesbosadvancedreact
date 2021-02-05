@@ -44,7 +44,7 @@ export default function Header() {
       <div className='sub-bar'>
         <p>search</p>
       </div>
-      <Nav></Nav>
+      <Nav />
     </HeaderStyles>
   );
 }
