@@ -47,7 +47,7 @@ const InnerStyles = styled.div`
   padding: 2rem;
 `;
 
-export default function Page({ children, testProp }) {
+export default function Page({ children }) {
   return (
     <>
       <GlobalStyles />

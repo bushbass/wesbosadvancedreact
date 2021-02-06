@@ -36,12 +36,12 @@ const HeaderStyles = styled.header`
 export default function Header() {
   return (
     <HeaderStyles>
-      <div className='bar'>
+      <div className="bar">
         <Logo>
-          <Link href='/'>Sick fits</Link>
+          <Link href="/">Sick fits</Link>
         </Logo>
       </div>
-      <div className='sub-bar'>
+      <div className="sub-bar">
         <p>search</p>
       </div>
       <Nav />
