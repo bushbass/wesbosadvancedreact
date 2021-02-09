@@ -1,7 +1,8 @@
-import { text, select } from '@keystone-next/fields';
+import { text, select, integer, relationship } from '@keystone-next/fields';
 import { list } from '@keystone-next/keystone/schema';
+
 export const Product = list({
-  //todo
+  // todo
   // access:
   fields: {
     name: text({ isRequired: true }),
@@ -10,11 +11,20 @@ export const Product = list({
         displayMode: 'textarea',
       },
     }),
+    photo: relationship({
+      ref: 'ProductImage.product',
+      ui: {
+        displayMode: 'cards',
+        cardFields: ['image', 'altText'],
+        inlineCreate: { fields: ['image', 'altText'] },
+        inlineEdit: { fields: ['image', 'altText'] },
+      },
+    }),
     status: select({
       options: [
         { label: 'Draft', value: 'DRAFT' },
         { label: 'Available', value: 'AVAILABLE' },
-        { label: 'AUnavailable', value: 'UNAVAILABLE' },
+        { label: 'Unavailable', value: 'UNAVAILABLE' },
       ],
       defaultValue: 'DRAFT',
       ui: {
@@ -22,5 +32,7 @@ export const Product = list({
         createView: { fieldMode: 'hidden' },
       },
     }),
+    price: integer(),
+    // to do : photo
   },
 });

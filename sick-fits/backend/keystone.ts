@@ -3,10 +3,12 @@ import { config, createSchema } from '@keystone-next/keystone/schema';
 import 'dotenv/config';
 import { User } from './schemas/Users';
 import { Product } from './schemas/Product';
+import { ProductImage } from './schemas/ProductImage';
 import {
   withItemData,
   statelessSessions,
 } from '@keystone-next/keystone/session';
+import { insertSeedData } from './seed-data';
 
 const databaseURL =
   process.env.DATABASE_URL || 'mongodb://localhost/eystone-sick-fits-tutorial';
@@ -37,12 +39,17 @@ export default withAuth(
     db: {
       adapter: 'mongoose',
       url: databaseURL,
-      // TODO: Add data seeding here
+      async onConnect(keystone) {
+        console.log('connected to the database');
+        if (process.argv.includes('--seed-data'))
+          await insertSeedData(keystone);
+      },
     },
     lists: createSchema({
       // schema itmes go in here
       User,
       Product,
+      ProductImage,
     }),
     ui: {
       // show ui only for people who pass this test
