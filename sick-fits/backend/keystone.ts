@@ -4,14 +4,11 @@ import 'dotenv/config';
 import { User } from './schemas/Users';
 import { Product } from './schemas/Product';
 import { ProductImage } from './schemas/ProductImage';
-import {
-  withItemData,
-  statelessSessions,
-} from '@keystone-next/keystone/session';
+import { withItemData, statelessSessions } from '@keystone-next/keystone/session';
 import { insertSeedData } from './seed-data';
 
 const databaseURL =
-  process.env.DATABASE_URL || 'mongodb://localhost/eystone-sick-fits-tutorial';
+  process.env.DATABASE_URL || 'mongodb://localhost/keystone-sick-fits-tutorial';
 
 const sessionConfig = {
   maxAge: 60 * 60 * 24 * 360, // how long should they stay signed in
@@ -33,7 +30,7 @@ export default withAuth(
     server: {
       cors: {
         origin: [process.env.FRONTEND_URL],
-        credential: true,
+        credentials: true,
       },
     },
     db: {
