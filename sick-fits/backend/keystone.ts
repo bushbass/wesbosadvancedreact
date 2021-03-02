@@ -18,6 +18,7 @@ const sessionConfig = {
 const { withAuth } = createAuth({
   listKey: 'User',
   identityField: 'email',
+  protectIdentities: false,
   secretField: 'password',
   initFirstItem: {
     fields: ['name', 'email', 'password'],
@@ -48,6 +49,7 @@ export default withAuth(
       Product,
       ProductImage,
     }),
+    
     ui: {
       // show ui only for people who pass this test
       isAccessAllowed: ({ session }) => {
