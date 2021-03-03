@@ -8,7 +8,7 @@ const SIGN_OUT_MUTATION = gql`
   }
 `;
 
-export default function SignOut(children) {
+export default function SignOut() {
   const [signout] = useMutation(SIGN_OUT_MUTATION, {
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
