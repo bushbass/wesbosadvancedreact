@@ -2,9 +2,13 @@ import { createAuth } from '@keystone-next/auth';
 import { config, createSchema } from '@keystone-next/keystone/schema';
 import 'dotenv/config';
 import { User } from './schemas/Users';
+import { CartItem } from './schemas/CartItem';
 import { Product } from './schemas/Product';
 import { ProductImage } from './schemas/ProductImage';
-import { withItemData, statelessSessions } from '@keystone-next/keystone/session';
+import {
+  withItemData,
+  statelessSessions,
+} from '@keystone-next/keystone/session';
 import { insertSeedData } from './seed-data';
 import { sendPasswordResetEmail } from './lib/mail';
 
@@ -55,8 +59,9 @@ export default withAuth(
       User,
       Product,
       ProductImage,
+      CartItem,
     }),
-    
+
     ui: {
       // show ui only for people who pass this test
       isAccessAllowed: ({ session }) => {

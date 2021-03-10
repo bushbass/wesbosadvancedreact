@@ -14,6 +14,14 @@ export const User = list({
       isUnique: true,
     }),
     password: password(),
+    cart: relationship({
+      ref: 'CartItem.user',
+      many: true,
+      ui: {
+        createView: { fieldMode: 'hidden' },
+        itemView: { fieldMode: 'read' },
+      },
+    }),
     // to do add roles, cart, orders
   },
 });
