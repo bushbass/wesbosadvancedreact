@@ -17,7 +17,7 @@ export default function Nav() {
           <Link href="/account">Account</Link>
           <SignOut />
           <button type="button" onClick={openCart}>
-            &times;
+            My Cart
           </button>
         </>
       )}
